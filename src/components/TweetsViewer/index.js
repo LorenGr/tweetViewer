@@ -1,7 +1,7 @@
 import React from 'react';
-import TweetColumns from '../TweetColumns';
+import TweetsFetcher from '../TweetsFetcher';
 
-export default class TweetViewer extends React.Component {
+export default class TweetsViewer extends React.Component {
     render(props) {
         return (
             <section>
@@ -9,7 +9,7 @@ export default class TweetViewer extends React.Component {
 
                 </header>
                 <content>
-                    <TweetColumns/>
+                    <TweetsFetcher/>
                 </content>
             </section>
         );

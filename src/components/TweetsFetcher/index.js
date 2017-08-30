@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import TweetsColumns from '../TweetsColumns';
 
-class TweetColumns extends React.Component {
+class TweetsFetcher extends React.Component {
 
     constructor(props) {
         super(props);
@@ -12,7 +13,7 @@ class TweetColumns extends React.Component {
 
     render(props) {
         return (
-            <div></div>
+            <TweetsColumns></TweetsColumns>
         );
     }
 }
@@ -22,4 +23,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(TweetColumns);
+export default connect(mapStateToProps)(TweetsFetcher);

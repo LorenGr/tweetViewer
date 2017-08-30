@@ -9,7 +9,7 @@ import createSagaMiddleware from 'redux-saga';
 import {sagas} from './sagas/index';
 
 //App Components
-import TweetViewer from  './components/TweetViewer';
+import TweetsViewer from  './components/TweetsViewer';
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -20,7 +20,7 @@ sagaMiddleware.run(sagas);
 
 ReactDOM.render(
     <Provider store={store}>
-        <TweetViewer/>
+        <TweetsViewer/>
     </Provider>,
     document.getElementById('app_container')
 );
