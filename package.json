@@ -7,7 +7,8 @@
   },
   "dependencies": {
     "twitter-proxy": "^2.0.0",
-    "webpack": "^3.5.5"
+    "webpack": "^3.5.5",
+    "axios": "^0.16.2"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
