@@ -1,0 +1,40 @@
+{
+  "name": "loren-code-challenge",
+  "description": "Tweet Viewer app developement for the purpose a test with AppDirect",
+  "author": {
+    "name": "Loren",
+    "email": "lorengrx@gmail.com"
+  },
+  "dependencies": {
+    "twitter-proxy": "^2.0.0",
+    "webpack": "^3.5.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.4.0",
+    "babel-plugin-transform-class-properties": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.22.0",
+    "babel-register": "^6.24.1",
+    "babel-runtime": "^6.23.0",
+    "clean-webpack-plugin": "^0.1.15",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "ignore-styles": "^5.0.1",
+    "react": "^15.6.1",
+    "react-addons-test-utils": "^15.6.0",
+    "react-dom": "^15.6.1",
+    "react-hot-loader": "3.0.0-beta.6",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.15.6",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "scripts": {
+    "twitter": "node twitterAPI.js",
+    "start": "webpack-dev-server --inline --hot --host localhost --port 3000",
+    "build": "webpack --colors --progress --config webpack.config.js"
+  }
+}
