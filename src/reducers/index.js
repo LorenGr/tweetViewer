@@ -1,6 +1,3 @@
 import {combineReducers} from 'redux';
-import tweets from './tweets';
-
-export const reducers = combineReducers({
-    tweets
-});
+import viewer from './viewer';
+export const reducers = combineReducers({viewer});

@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "dateformat": "^2.0.0",
+    "react-jss": "^7.1.0",
     "react-sortable-hoc": "^0.6.7",
     "twitter-proxy": "^2.0.0",
     "webpack": "^3.5.5"

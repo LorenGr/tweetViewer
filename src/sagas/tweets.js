@@ -3,5 +3,5 @@ import TwitterApi from '../api';
 
 export function* fetchTweets(action) {
     const tweets = yield call(TwitterApi.getList);
-    yield put({type: 'FETCH_TWEETS_SUCCESS', tweets});
+    yield put({type: 'FETCH_TWEETS_SUCCESS', tweets : tweets.data});
 }
