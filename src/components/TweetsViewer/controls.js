@@ -25,7 +25,7 @@ class AppControls extends React.Component {
     render() {
         const classes = this.props.classes;
         return (
-            <AppBar position="static">
+            <AppBar position="static" color="default">
                 <Toolbar>
                     <Typography type="title" color="inherit" className={classes.flex}>
                         Twitter Viewer

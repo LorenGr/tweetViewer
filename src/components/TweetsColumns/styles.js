@@ -5,6 +5,9 @@ const styles = {
     },
     handle: {
         cursor: 'move'
+    },
+    container: {
+        margin: 0
     }
 };
 
