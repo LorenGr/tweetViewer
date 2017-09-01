@@ -7,9 +7,12 @@ import styles from './styles';
 import {connect} from 'react-redux';
 import injectSheet from 'react-jss';
 
+//Slider
+import Slider, {Range} from 'rc-slider';
+
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui-icons/MoreVert';
-import Dialog, {DialogTitle} from 'material-ui/Dialog';
+import Dialog from 'material-ui/Dialog';
 
 class MoreControlsDialog extends React.Component {
 
@@ -17,13 +20,29 @@ class MoreControlsDialog extends React.Component {
         this.props.onRequestClose(this.props.selectedValue);
     };
 
+    setColumnAmount = (value) => {
+        this.props.onChangeControls({
+            type: "SET_COLUMN_AMOUNT",
+            amount: value
+        });
+    };
+
     render() {
         const {classes, onRequestClose, ...other} = this.props;
+        const wrapperStyle = {width: 400, margin: 50};
+        const value = 20;
         return (
             <Dialog onRequestClose={this.handleRequestClose} {...other}>
-                <div>
-                    test
+
+                <div style={wrapperStyle}>
+                    <Slider onAfterChange={this.setColumnAmount}
+                            min={5}
+                            max={30}
+                            step={5}
+                            defaultValue={30}
+                    />
                 </div>
+
             </Dialog>
         );
     }
@@ -78,7 +97,9 @@ class AppControls extends React.Component {
                     </Toolbar>
                 </AppBar>
                 <MoreControlsDialog open={this.state.open}
-                                    onRequestClose={this.handleRequestClose}/>
+                                    onChangeControls={this.props.dispatch}
+                                    onRequestClose={this.handleRequestClose}
+                />
             </div>
         );
     }

@@ -17,17 +17,19 @@ module.exports = {
         ],
         "index": __dirname + '/src' + '/index.js',
     },
-    plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-        }),
-    ],
     output: {
         path: __dirname + '/public/',
         publicPath: '/',
         filename: "[name].bundle.js",
         chunkFilename: "[id].bundle.js"
     },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+        }),
+        new ExtractTextPlugin('../css/main.css')
+    ],
+
     module: {
         rules: [
             {
@@ -50,9 +52,20 @@ module.exports = {
                             ]
                         }
                     }]
-            }]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                    },
+                ]
+            }
+        ]
     },
-    devtool: '#inline-source-map',
     devServer: {
         contentBase: __dirname + '/public'
     }
