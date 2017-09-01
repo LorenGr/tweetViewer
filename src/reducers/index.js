@@ -1,3 +1,4 @@
 import {combineReducers} from 'redux';
 import viewer from './viewer';
-export const reducers = combineReducers({viewer});
+import controls from './controls';
+export const reducers = combineReducers({viewer,controls});

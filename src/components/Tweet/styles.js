@@ -1,6 +1,13 @@
 export default {
     tweet: {
-        border: '1px solid grey',
-        display : 'block'
+        display: 'block',
+        textDecoration: 'none',
+
+    },
+    body: {
+        lineHeight: 1.5
+    },
+    date : {
+        fontSize : 12
     }
 }

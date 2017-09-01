@@ -1,39 +1,30 @@
 import React from 'react';
 import {SortableContainer, SortableElement, SortableHandle, arrayMove} from 'react-sortable-hoc';
+import TweetsColumn from '../TweetsColumn';
+import ColumnHandle from './handle';
 import injectSheet from 'react-jss';
 import styles from './styles';
-import TweetsColumn from '../TweetsColumn';
 
-const DragHandle = SortableHandle((props) =>
-    <span>= COLUMN </span>
-);
+import Grid from 'material-ui/Grid';
 
+const DragHandle = SortableHandle(ColumnHandle);
 const SortableItem = SortableElement((props) =>
-    <li className={props.className}>
-        <DragHandle/>
-        {props.value}
-        <TweetsColumn value={props.value} tweets={props.tweets}/>
-    </li>
+    <div className={props.className}>
+        <TweetsColumn handle={DragHandle} value={props.value} tweets={props.tweets}/>
+    </div>
 );
 
-class TweetsColumnsRepeater extends React.Component {
-    render() {
-        let {items, classes, tweets} = this.props;
-        return (
-            <ul>
-                {items.map((value, index) => (
-                    <SortableItem tweets={tweets[value]}
-                                  className={classes.column}
-                                  key={`item-${value}`}
-                                  index={index}
-                                  value={value}/>
-                ))}
-            </ul>
-        )
-    }
-}
-
-const SortableList = SortableContainer((props) => <TweetsColumnsRepeater {...props}></TweetsColumnsRepeater>);
+const SortableList = SortableContainer(({items, classes, tweets}) =>
+    <Grid container className={classes.container} spacing={16}>
+        {items.map((value, index) => (
+            <SortableItem tweets={tweets[value]}
+                          className={classes.column}
+                          key={`item-${value}`}
+                          index={index}
+                          value={value}/>
+        ))}
+    </Grid>
+);
 
 class TweetsColumns extends React.Component {
 
@@ -49,7 +40,6 @@ class TweetsColumns extends React.Component {
             items: Array.apply(null, {length: this.props.columnCount}).map(Number.call, Number)
         };
     }
-
 
     render() {
         return <SortableList items={this.state.items} onSortEnd={this.onSortEnd} useDragHandle={true}

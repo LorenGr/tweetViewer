@@ -1,8 +1,10 @@
 const styles = {
     column: {
-        display: 'inline-block',
-        width: '30%',
-        verticalAlign : 'top'
+        flex: 1,
+        verticalAlign: 'top'
+    },
+    handle: {
+        cursor: 'move'
     }
 };
 
