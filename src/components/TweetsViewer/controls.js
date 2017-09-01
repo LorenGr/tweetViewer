@@ -7,12 +7,38 @@ import styles from './styles';
 import {connect} from 'react-redux';
 import injectSheet from 'react-jss';
 
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui-icons/MoreVert';
+import Dialog, {DialogTitle} from 'material-ui/Dialog';
+
+class MoreControlsDialog extends React.Component {
+
+    handleRequestClose = () => {
+        this.props.onRequestClose(this.props.selectedValue);
+    };
+
+    render() {
+        const {classes, onRequestClose, ...other} = this.props;
+        return (
+            <Dialog onRequestClose={this.handleRequestClose} {...other}>
+                <div>
+                    test
+                </div>
+            </Dialog>
+        );
+    }
+}
+
 class AppControls extends React.Component {
 
     constructor(props) {
         super(props);
         this.switchTheme = this.switchTheme.bind(this);
     }
+
+    state = {
+        open: false
+    };
 
     switchTheme = (event, checked) => {
         this.props.dispatch({
@@ -22,22 +48,38 @@ class AppControls extends React.Component {
 
     };
 
+    handleRequestClose = value => {
+        this.setState({open: false});
+    };
+
     render() {
         const classes = this.props.classes;
         return (
-            <AppBar position="static" color="default">
-                <Toolbar>
-                    <Typography type="title" color="inherit" className={classes.flex}>
-                        Twitter Viewer
-                    </Typography>
+            <div>
+                <AppBar position="static" color="default">
+                    <Toolbar>
+                        <Typography type="title" color="inherit" className={classes.flex}>
+                            Twitter Viewer
+                        </Typography>
 
-                    <Switch
-                        onChange={this.switchTheme}
-                        aria-label="checkedA"
-                    />
+                        <Switch
+                            onChange={this.switchTheme}
+                            aria-label="checkedA"
+                        />
 
-                </Toolbar>
-            </AppBar>
+                        <IconButton
+                            aria-label="More"
+                            aria-haspopup="true"
+                            onClick={() => this.setState({open: true})}
+                        >
+                            <MoreVertIcon/>
+                        </IconButton>
+
+                    </Toolbar>
+                </AppBar>
+                <MoreControlsDialog open={this.state.open}
+                                    onRequestClose={this.handleRequestClose}/>
+            </div>
         );
     }
 }
