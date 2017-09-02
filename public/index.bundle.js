@@ -277,7 +277,7 @@ var TwitterApi = function () {
     _createClass(TwitterApi, null, [{
         key: "getList",
         value: function getList(startDate) {
-            return _axios2.default.get("https://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=appdirect");
+            return _axios2.default.get("http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=appdirect");
         }
     }]);
 
