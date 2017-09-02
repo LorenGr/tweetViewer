@@ -2,6 +2,10 @@
 
 Tweet Viewer app developement for the purpose a test with AppDirect
 
+## Demo
+
+https://twitterviewerapp.herokuapp.com
+
 ## Setup
 
 Install the project dependencies:
@@ -10,7 +14,11 @@ Install the project dependencies:
 
 ## Running
 
-Starts the static and proxy servers:
+Starts the Twitter API proxy :
+
+`npm twitter`
+
+Starts webpack-server:
 
 `npm start`
 
