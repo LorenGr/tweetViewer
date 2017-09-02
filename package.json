@@ -11,9 +11,11 @@
     "material-ui": "^1.0.0-beta.7",
     "material-ui-icons": "^1.0.0-beta.5",
     "rc-slider": "^8.3.1",
+    "react-html-parser": "^2.0.0",
     "react-jss": "^7.1.0",
     "react-sortable-hoc": "^0.6.7",
     "redux-localstorage": "^0.4.1",
+    "to-mention-link": "^0.1.0",
     "twitter-proxy": "^2.0.0",
     "webpack": "^3.5.5"
   },

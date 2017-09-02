@@ -13,6 +13,10 @@ export default function controls(state = {
             new_state.columnAmount = action.amount;
             return new_state;
 
+        case "SET_TWEETS_START_DATE" :
+            new_state.startDate = action.date;
+            return new_state;
+
         default :
             return state;
 

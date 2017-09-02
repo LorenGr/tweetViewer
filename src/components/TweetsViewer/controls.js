@@ -13,12 +13,16 @@ import Slider, {Range} from 'rc-slider';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui-icons/MoreVert';
 import Dialog from 'material-ui/Dialog';
+import TextField from 'material-ui/TextField';
+
+const today = new Date().toISOString().substr(0, 10);
 
 class MoreControlsDialog extends React.Component {
 
     constructor(props) {
         super(props);
         this.setColumnDisplay = this.setColumnDisplay.bind(this);
+        this.setTweetsStartDate = this.setTweetsStartDate.bind(this);
     }
 
     handleRequestClose = () => {
@@ -38,6 +42,17 @@ class MoreControlsDialog extends React.Component {
         });
     }
 
+    setTweetsStartDate(field) {
+        this.props.onChangeControls({
+            type: "SET_TWEETS_START_DATE",
+            date : field.target.value
+        });
+    }
+
+    getTweetsStartDate() {
+        return this.props.controls.startDate || today;
+    }
+
     state = {
         columnAmount: this.props.controls.columnAmount
     };
@@ -45,11 +60,9 @@ class MoreControlsDialog extends React.Component {
     render() {
         const {classes, onRequestClose, ...other} = this.props;
         const wrapperStyle = {width: 400, margin: 50};
+
         return (
             <Dialog onRequestClose={this.handleRequestClose} open={this.props.open}>
-
-
-
                 <div style={wrapperStyle}>
                     <Typography type="caption">Tweets per column</Typography>
                     <Typography type="headline">{this.state.columnAmount}</Typography>
@@ -60,8 +73,23 @@ class MoreControlsDialog extends React.Component {
                             step={2}
                             defaultValue={this.props.controls.columnAmount}
                     />
+                    <TextField
+                        id="date"
+                        label="Tweets starting from date"
+                        type="date"
+                        defaultValue={this.getTweetsStartDate()}
+                        max={today}
+                        margin="normal"
+                        fullWidth
+                        InputLabelProps={{
+                            shrink: true
+                        }}
+                        inputProps={{
+                            max : today
+                        }}
+                        onChange={this.setTweetsStartDate}
+                    />
                 </div>
-
             </Dialog>
         );
     }
