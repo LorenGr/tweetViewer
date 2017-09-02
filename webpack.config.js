@@ -57,9 +57,12 @@ module.exports = {
             name: 'vendor',
         }),
         new ExtractTextPlugin('../css/main.css'),
-        new BundleAnalyzerPlugin()
+        new BundleAnalyzerPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"production"'
+        })
     ],
-
+    devtool: "cheap-source-map",
     module: {
         rules: [
             {

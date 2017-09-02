@@ -1,36 +1,36 @@
 webpackJsonp([1],{
 
-/***/ 1232:
+/***/ 1218:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
 
-var _react = __webpack_require__(3);
+
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(27);
+var _reactDom = __webpack_require__(26);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _redux = __webpack_require__(166);
+var _redux = __webpack_require__(163);
 
-var _reactRedux = __webpack_require__(107);
+var _reactRedux = __webpack_require__(105);
 
-var _index = __webpack_require__(1233);
+var _index = __webpack_require__(1219);
 
-var _reduxSaga = __webpack_require__(240);
+var _reduxSaga = __webpack_require__(236);
 
 var _reduxSaga2 = _interopRequireDefault(_reduxSaga);
 
-var _index2 = __webpack_require__(1236);
+var _index2 = __webpack_require__(1222);
 
-var _reduxLocalstorage = __webpack_require__(384);
+var _reduxLocalstorage = __webpack_require__(379);
 
 var _reduxLocalstorage2 = _interopRequireDefault(_reduxLocalstorage);
 
-var _TweetsViewer = __webpack_require__(1239);
+var _TweetsViewer = __webpack_require__(1225);
 
 var _TweetsViewer2 = _interopRequireDefault(_TweetsViewer);
 
@@ -54,29 +54,28 @@ _reactDom2.default.render(_react2.default.createElement(
     _react2.default.createElement(_TweetsViewer2.default, null)
 ), document.getElementById('app_container'));
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\index.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\index.js"); } } })();
 
 /***/ }),
 
-/***/ 1233:
+/***/ 1219:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.reducers = undefined;
 
-var _redux = __webpack_require__(166);
+var _redux = __webpack_require__(163);
 
-var _viewer = __webpack_require__(1234);
+var _viewer = __webpack_require__(1220);
 
 var _viewer2 = _interopRequireDefault(_viewer);
 
-var _controls = __webpack_require__(1235);
+var _controls = __webpack_require__(1221);
 
 var _controls2 = _interopRequireDefault(_controls);
 
@@ -84,16 +83,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var reducers = exports.reducers = (0, _redux.combineReducers)({ viewer: _viewer2.default, controls: _controls2.default });
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\reducers\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\reducers\\index.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\reducers\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\reducers\\index.js"); } } })();
 
 /***/ }),
 
-/***/ 1234:
+/***/ 1220:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -119,16 +117,15 @@ function viewer() {
     }
 }
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\reducers\\viewer.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\reducers\\viewer.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\reducers\\viewer.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\reducers\\viewer.js"); } } })();
 
 /***/ }),
 
-/***/ 1235:
+/***/ 1221:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -162,27 +159,26 @@ function controls() {
     }
 }
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\reducers\\controls.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\reducers\\controls.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\reducers\\controls.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\reducers\\controls.js"); } } })();
 
 /***/ }),
 
-/***/ 1236:
+/***/ 1222:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.sagas = sagas;
 
-var _reduxSaga = __webpack_require__(240);
+var _reduxSaga = __webpack_require__(236);
 
-var _effects = __webpack_require__(242);
+var _effects = __webpack_require__(238);
 
-var _tweets = __webpack_require__(1237);
+var _tweets = __webpack_require__(1223);
 
 var _marked = /*#__PURE__*/regeneratorRuntime.mark(sagas);
 
@@ -202,25 +198,24 @@ function sagas() {
     }, _marked, this);
 }
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\sagas\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\sagas\\index.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\sagas\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\sagas\\index.js"); } } })();
 
 /***/ }),
 
-/***/ 1237:
+/***/ 1223:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.fetchTweets = fetchTweets;
 
-var _effects = __webpack_require__(242);
+var _effects = __webpack_require__(238);
 
-var _api = __webpack_require__(1238);
+var _api = __webpack_require__(1224);
 
 var _api2 = _interopRequireDefault(_api);
 
@@ -250,16 +245,15 @@ function fetchTweets(action) {
     }, _marked, this);
 }
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\sagas\\tweets.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\sagas\\tweets.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\sagas\\tweets.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\sagas\\tweets.js"); } } })();
 
 /***/ }),
 
-/***/ 1238:
+/***/ 1224:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -267,7 +261,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _axios = __webpack_require__(443);
+var _axios = __webpack_require__(438);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -292,16 +286,15 @@ var TwitterApi = function () {
 
 exports.default = TwitterApi;
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\api\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\api\\index.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\api\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\api\\index.js"); } } })();
 
 /***/ }),
 
-/***/ 1239:
+/***/ 1225:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -309,21 +302,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _TweetsFetcher = __webpack_require__(1240);
+var _TweetsFetcher = __webpack_require__(1226);
 
 var _TweetsFetcher2 = _interopRequireDefault(_TweetsFetcher);
 
-var _styles = __webpack_require__(481);
+var _styles = __webpack_require__(476);
 
-var _controls = __webpack_require__(1248);
+var _controls = __webpack_require__(1234);
 
 var _controls2 = _interopRequireDefault(_controls);
 
-var _reactRedux = __webpack_require__(107);
+var _reactRedux = __webpack_require__(105);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -404,16 +397,15 @@ function mapEditStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapEditStateToProps)(TweetsViewer);
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\index.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\index.js"); } } })();
 
 /***/ }),
 
-/***/ 1240:
+/***/ 1226:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -421,17 +413,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(107);
+var _reactRedux = __webpack_require__(105);
 
-var _TweetsColumns = __webpack_require__(1241);
+var _TweetsColumns = __webpack_require__(1227);
 
 var _TweetsColumns2 = _interopRequireDefault(_TweetsColumns);
 
-var _divider = __webpack_require__(1247);
+var _divider = __webpack_require__(1233);
 
 var _divider2 = _interopRequireDefault(_divider);
 
@@ -481,16 +473,15 @@ function mapStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(TweetsFetcher);
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsFetcher\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsFetcher\\index.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsFetcher\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsFetcher\\index.js"); } } })();
 
 /***/ }),
 
-/***/ 1241:
+/***/ 1227:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -500,29 +491,29 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactSortableHoc = __webpack_require__(401);
+var _reactSortableHoc = __webpack_require__(396);
 
-var _TweetsColumn = __webpack_require__(1242);
+var _TweetsColumn = __webpack_require__(1228);
 
 var _TweetsColumn2 = _interopRequireDefault(_TweetsColumn);
 
-var _handle = __webpack_require__(1246);
+var _handle = __webpack_require__(1232);
 
 var _handle2 = _interopRequireDefault(_handle);
 
-var _reactJss = __webpack_require__(106);
+var _reactJss = __webpack_require__(104);
 
 var _reactJss2 = _interopRequireDefault(_reactJss);
 
-var _styles = __webpack_require__(485);
+var _styles = __webpack_require__(480);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _Grid = __webpack_require__(289);
+var _Grid = __webpack_require__(285);
 
 var _Grid2 = _interopRequireDefault(_Grid);
 
@@ -596,16 +587,15 @@ var TweetsColumns = function (_React$Component) {
 
 exports.default = (0, _reactJss2.default)(_styles2.default)(TweetsColumns);
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsColumns\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsColumns\\index.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsColumns\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsColumns\\index.js"); } } })();
 
 /***/ }),
 
-/***/ 1242:
+/***/ 1228:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -613,33 +603,33 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Tweet = __webpack_require__(1243);
+var _Tweet = __webpack_require__(1229);
 
 var _Tweet2 = _interopRequireDefault(_Tweet);
 
-var _reactJss = __webpack_require__(106);
+var _reactJss = __webpack_require__(104);
 
 var _reactJss2 = _interopRequireDefault(_reactJss);
 
-var _styles = __webpack_require__(1245);
+var _styles = __webpack_require__(1231);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _reactRedux = __webpack_require__(107);
+var _reactRedux = __webpack_require__(105);
 
-var _Grid = __webpack_require__(289);
+var _Grid = __webpack_require__(285);
 
 var _Grid2 = _interopRequireDefault(_Grid);
 
-var _Paper = __webpack_require__(137);
+var _Paper = __webpack_require__(136);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
-var _Divider = __webpack_require__(479);
+var _Divider = __webpack_require__(474);
 
 var _Divider2 = _interopRequireDefault(_Divider);
 
@@ -710,16 +700,15 @@ function mapEditStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapEditStateToProps)((0, _reactJss2.default)(_styles2.default)(TweetsColumn));
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsColumn\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsColumn\\index.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsColumn\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsColumn\\index.js"); } } })();
 
 /***/ }),
 
-/***/ 1243:
+/***/ 1229:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -727,41 +716,41 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styles = __webpack_require__(1244);
+var _styles = __webpack_require__(1230);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _reactJss = __webpack_require__(106);
+var _reactJss = __webpack_require__(104);
 
 var _reactJss2 = _interopRequireDefault(_reactJss);
 
-var _dateformat = __webpack_require__(484);
+var _dateformat = __webpack_require__(479);
 
 var _dateformat2 = _interopRequireDefault(_dateformat);
 
-var _Card = __webpack_require__(475);
+var _Card = __webpack_require__(470);
 
-var _Typography = __webpack_require__(114);
+var _Typography = __webpack_require__(112);
 
 var _Typography2 = _interopRequireDefault(_Typography);
 
-var _toMentionLink = __webpack_require__(385);
+var _toMentionLink = __webpack_require__(380);
 
 var _toMentionLink2 = _interopRequireDefault(_toMentionLink);
 
-var _reactHtmlParser = __webpack_require__(387);
+var _reactHtmlParser = __webpack_require__(382);
 
 var _reactHtmlParser2 = _interopRequireDefault(_reactHtmlParser);
 
-var _IconButton = __webpack_require__(135);
+var _IconButton = __webpack_require__(134);
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
-var _KeyboardArrowRight = __webpack_require__(482);
+var _KeyboardArrowRight = __webpack_require__(477);
 
 var _KeyboardArrowRight2 = _interopRequireDefault(_KeyboardArrowRight);
 
@@ -833,16 +822,15 @@ var Tweet = function (_React$Component) {
 
 exports.default = (0, _reactJss2.default)(_styles2.default)(Tweet);
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\Tweet\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\Tweet\\index.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\Tweet\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\Tweet\\index.js"); } } })();
 
 /***/ }),
 
-/***/ 1244:
+/***/ 1230:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -874,16 +862,15 @@ exports.default = {
     }
 };
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\Tweet\\styles.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\Tweet\\styles.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\Tweet\\styles.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\Tweet\\styles.js"); } } })();
 
 /***/ }),
 
-/***/ 1245:
+/***/ 1231:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -898,34 +885,33 @@ var styles = {
 
 exports.default = styles;
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsColumn\\styles.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsColumn\\styles.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsColumn\\styles.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsColumn\\styles.js"); } } })();
 
 /***/ }),
 
-/***/ 1246:
+/***/ 1232:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _IconButton = __webpack_require__(135);
+var _IconButton = __webpack_require__(134);
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
-var _styles = __webpack_require__(485);
+var _styles = __webpack_require__(480);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _reactJss = __webpack_require__(106);
+var _reactJss = __webpack_require__(104);
 
 var _reactJss2 = _interopRequireDefault(_reactJss);
 
@@ -945,16 +931,15 @@ var ColumnHandle = function ColumnHandle(props) {
 
 exports.default = (0, _reactJss2.default)(_styles2.default)(ColumnHandle);
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsColumns\\handle.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsColumns\\handle.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsColumns\\handle.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsColumns\\handle.js"); } } })();
 
 /***/ }),
 
-/***/ 1247:
+/***/ 1233:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -968,16 +953,15 @@ function divider(items, by) {
     });
 }
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsFetcher\\divider.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsFetcher\\divider.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsFetcher\\divider.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsFetcher\\divider.js"); } } })();
 
 /***/ }),
 
-/***/ 1248:
+/***/ 1234:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -985,53 +969,53 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(3);
+var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _AppBar = __webpack_require__(480);
+var _AppBar = __webpack_require__(475);
 
 var _AppBar2 = _interopRequireDefault(_AppBar);
 
-var _Toolbar = __webpack_require__(459);
+var _Toolbar = __webpack_require__(454);
 
 var _Toolbar2 = _interopRequireDefault(_Toolbar);
 
-var _Typography = __webpack_require__(114);
+var _Typography = __webpack_require__(112);
 
 var _Typography2 = _interopRequireDefault(_Typography);
 
-var _Switch = __webpack_require__(473);
+var _Switch = __webpack_require__(468);
 
 var _Switch2 = _interopRequireDefault(_Switch);
 
-var _styles = __webpack_require__(1249);
+var _styles = __webpack_require__(1235);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _reactRedux = __webpack_require__(107);
+var _reactRedux = __webpack_require__(105);
 
-var _reactJss = __webpack_require__(106);
+var _reactJss = __webpack_require__(104);
 
 var _reactJss2 = _interopRequireDefault(_reactJss);
 
-var _rcSlider = __webpack_require__(417);
+var _rcSlider = __webpack_require__(412);
 
 var _rcSlider2 = _interopRequireDefault(_rcSlider);
 
-var _IconButton = __webpack_require__(135);
+var _IconButton = __webpack_require__(134);
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
-var _MoreVert = __webpack_require__(483);
+var _MoreVert = __webpack_require__(478);
 
 var _MoreVert2 = _interopRequireDefault(_MoreVert);
 
-var _Dialog = __webpack_require__(460);
+var _Dialog = __webpack_require__(455);
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
-var _TextField = __webpack_require__(469);
+var _TextField = __webpack_require__(464);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
@@ -1241,16 +1225,15 @@ function mapEditStateToProps(state) {
 
 exports.default = (0, _reactRedux.connect)(mapEditStateToProps)((0, _reactJss2.default)(_styles2.default)(AppControls));
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\controls.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\controls.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\controls.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\controls.js"); } } })();
 
 /***/ }),
 
-/***/ 1249:
+/***/ 1235:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -1262,16 +1245,15 @@ var styles = {
 };
 exports.default = styles;
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\styles.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\styles.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\styles.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\styles.js"); } } })();
 
 /***/ }),
 
-/***/ 485:
+/***/ 480:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -1291,9 +1273,9 @@ var styles = {
 
 exports.default = styles;
 
- ;(function register() { /* react-hot-loader/webpack */ if (process.env.NODE_ENV !== 'production') { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsColumns\\styles.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsColumns\\styles.js"); } } })();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsColumns\\styles.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsColumns\\styles.js"); } } })();
 
 /***/ })
 
-},[1232]);
+},[1218]);
+//# sourceMappingURL=index.bundle.js.map
