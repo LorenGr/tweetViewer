@@ -30,16 +30,15 @@ class MoreControlsDialog extends React.Component {
     render() {
         const {classes, onRequestClose, ...other} = this.props;
         const wrapperStyle = {width: 400, margin: 50};
-        const value = 20;
         return (
-            <Dialog onRequestClose={this.handleRequestClose} {...other}>
+            <Dialog onRequestClose={this.handleRequestClose} open={this.props.open}>
 
                 <div style={wrapperStyle}>
                     <Slider onAfterChange={this.setColumnAmount}
-                            min={5}
-                            max={30}
-                            step={5}
-                            defaultValue={30}
+                            min={2}
+                            max={10}
+                            step={2}
+                            defaultValue={this.props.controls.columnAmount}
                     />
                 </div>
 
@@ -56,7 +55,7 @@ class AppControls extends React.Component {
 
         this.state = {
             open: false,
-            theme: this.props.theme === "dark"
+            theme: this.props.controls.theme === "dark"
         };
     }
 
@@ -102,6 +101,7 @@ class AppControls extends React.Component {
                 <MoreControlsDialog open={this.state.open}
                                     onChangeControls={this.props.dispatch}
                                     onRequestClose={this.handleRequestClose}
+                                    controls={this.props.controls}
                 />
             </div>
         );
@@ -110,7 +110,7 @@ class AppControls extends React.Component {
 
 function mapEditStateToProps(state) {
     return {
-        theme: state.controls.theme
+        controls: state.controls
     }
 }
 
