@@ -22,7 +22,11 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', (request, response) => {
     response.render('public/index');
 });
-
+app.all('/', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
 app.listen(port, (err) => {
     if (err) {
         return console.log('something bad happened', err)
