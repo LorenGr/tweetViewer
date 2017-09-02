@@ -8,7 +8,8 @@ class TweetsFetcher extends React.Component {
     constructor(props) {
         super(props);
         this.props.dispatch({
-            type: "FETCH_TWEETS"
+            type: "FETCH_TWEETS",
+            startDate : this.props.startDate
         });
     }
 
@@ -23,7 +24,8 @@ class TweetsFetcher extends React.Component {
 function mapStateToProps(state) {
     return {
         tweets: state.viewer.tweets,
-        cols: state.viewer.cols
+        cols: state.viewer.cols,
+        startDate : state.controls.startDate
     }
 }
 
