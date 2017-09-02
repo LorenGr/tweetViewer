@@ -1,7 +1,8 @@
 var webpack = require("webpack"),
     path = require('path'),
     CleanWebpackPlugin = require('clean-webpack-plugin'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     entry: {
@@ -12,8 +13,36 @@ module.exports = {
         "vendor": [
             "react",
             "react-dom",
+            "react-jss",
             "react-redux",
-            "redux"
+            "redux",
+            "redux-saga",
+            "redux-localstorage",
+
+            "to-mention-link",
+            "react-html-parser",
+            "react-sortable-hoc",
+            "rc-slider",
+            "axios",
+
+            'material-ui/IconButton',
+            "material-ui/Typography",
+            "material-ui/Toolbar",
+            "material-ui/Dialog",
+            "material-ui/TextField",
+            "material-ui/Switch",
+            'material-ui/Card',
+            'material-ui/Grid',
+            'material-ui/Paper',
+            'material-ui/Divider',
+            'material-ui/AppBar',
+            'material-ui/styles',
+
+            'material-ui-icons/KeyboardArrowRight',
+            'material-ui-icons/MoreVert',
+
+            "dateformat"
+
         ],
         "index": __dirname + '/src' + '/index.js',
     },
@@ -27,7 +56,8 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
         }),
-        new ExtractTextPlugin('../css/main.css')
+        new ExtractTextPlugin('../css/main.css'),
+        new BundleAnalyzerPlugin()
     ],
 
     module: {
