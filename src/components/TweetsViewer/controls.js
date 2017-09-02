@@ -53,17 +53,20 @@ class AppControls extends React.Component {
     constructor(props) {
         super(props);
         this.switchTheme = this.switchTheme.bind(this);
+
+        this.state = {
+            open: false,
+            theme: this.props.theme === "dark"
+        };
     }
 
-    state = {
-        open: false
-    };
 
     switchTheme = (event, checked) => {
         this.props.dispatch({
             type: "SET_THEME",
             theme: checked ? "dark" : "light"
-        })
+        });
+        this.setState({theme: checked});
 
     };
 
@@ -83,7 +86,7 @@ class AppControls extends React.Component {
 
                         <Switch
                             onChange={this.switchTheme}
-                            aria-label="checkedA"
+                            checked={this.state.theme}
                         />
 
                         <IconButton
@@ -105,6 +108,12 @@ class AppControls extends React.Component {
     }
 }
 
-export default connect()(
+function mapEditStateToProps(state) {
+    return {
+        theme: state.controls.theme
+    }
+}
+
+export default connect(mapEditStateToProps)(
     injectSheet(styles)(AppControls)
 );

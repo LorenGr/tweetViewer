@@ -14,7 +14,7 @@ import TweetsViewer from './components/TweetsViewer';
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const persistStateMiddleware = persistState();
+const persistStateMiddleware = persistState("controls");
 const store = createStore(reducers, composeEnhancers(
     applyMiddleware(sagaMiddleware), persistStateMiddleware
 ));
