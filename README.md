@@ -1,6 +1,7 @@
-# appdirect-code-challenge-solution
+# Twitter Viewer
 
-Tweet Viewer app developement for the purpose a test with AppDirect
+An app that lists tweets from a specific timeline into 3 columns.
+Features include draggable sortable columns and theme selection, and control over the amount of tweets per column.
 
 ## Demo
 
