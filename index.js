@@ -16,6 +16,7 @@ twitterProxyServer(twitterAPIKeys);
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3001;
+app.use(express.methodOverride());
 app.use(allowCrossDomain);
 app.use(express.static(__dirname + '/public'));
 app.get('/', (request, response) => {
