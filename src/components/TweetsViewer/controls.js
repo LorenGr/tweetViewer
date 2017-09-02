@@ -16,6 +16,11 @@ import Dialog from 'material-ui/Dialog';
 
 class MoreControlsDialog extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.setColumnDisplay = this.setColumnDisplay.bind(this);
+    }
+
     handleRequestClose = () => {
         this.props.onRequestClose(this.props.selectedValue);
     };
@@ -27,14 +32,29 @@ class MoreControlsDialog extends React.Component {
         });
     };
 
+    setColumnDisplay(value) {
+        this.setState({
+            columnAmount: value
+        });
+    }
+
+    state = {
+        columnAmount: this.props.controls.columnAmount
+    };
+
     render() {
         const {classes, onRequestClose, ...other} = this.props;
         const wrapperStyle = {width: 400, margin: 50};
         return (
             <Dialog onRequestClose={this.handleRequestClose} open={this.props.open}>
 
+
+
                 <div style={wrapperStyle}>
-                    <Slider onAfterChange={this.setColumnAmount}
+                    <Typography type="caption">Tweets per column</Typography>
+                    <Typography type="headline">{this.state.columnAmount}</Typography>
+                    <Slider onChange={this.setColumnDisplay}
+                            onAfterChange={this.setColumnAmount}
                             min={2}
                             max={10}
                             step={2}
