@@ -8,6 +8,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "dateformat": "^2.0.0",
+    "express": "^4.15.4",
     "material-ui": "^1.0.0-beta.7",
     "material-ui-icons": "^1.0.0-beta.5",
     "rc-slider": "^8.3.1",
@@ -48,7 +49,8 @@
   },
   "scripts": {
     "twitter": "node twitterAPI.js",
-    "start": "webpack-dev-server --inline --hot --host localhost --port 3000",
+    "start": "node index.js",
+    "start-dev": "webpack-dev-server --inline --hot --host localhost --port 3000",
     "build": "webpack --colors --progress --config webpack.config.js"
   }
 }
