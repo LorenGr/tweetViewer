@@ -15,11 +15,7 @@ Install the project dependencies:
 
 ## Running
 
-Starts the Twitter API proxy :
-
-`npm twitter`
-
-Starts webpack-server:
+Start App :
 
 `npm start`
 
