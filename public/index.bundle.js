@@ -16,7 +16,7 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _redux = __webpack_require__(163);
 
-var _reactRedux = __webpack_require__(105);
+var _reactRedux = __webpack_require__(106);
 
 var _index = __webpack_require__(1219);
 
@@ -26,7 +26,7 @@ var _reduxSaga2 = _interopRequireDefault(_reduxSaga);
 
 var _index2 = __webpack_require__(1222);
 
-var _reduxLocalstorage = __webpack_require__(379);
+var _reduxLocalstorage = __webpack_require__(380);
 
 var _reduxLocalstorage2 = _interopRequireDefault(_reduxLocalstorage);
 
@@ -133,7 +133,9 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = controls;
 function controls() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-        theme: 'light'
+        theme: 'light',
+        tweetsAmount: 30,
+        columnAmount: 10
     };
     var action = arguments[1];
 
@@ -230,7 +232,10 @@ function fetchTweets(action) {
             switch (_context.prev = _context.next) {
                 case 0:
                     _context.next = 2;
-                    return (0, _effects.call)(_api2.default.getList, [action.startDate]);
+                    return (0, _effects.call)(_api2.default.getList, {
+                        startDate: action.startDate,
+                        tweetsAmount: action.tweetsAmount
+                    });
 
                 case 2:
                     tweets = _context.sent;
@@ -261,7 +266,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _axios = __webpack_require__(438);
+var _axios = __webpack_require__(439);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -276,8 +281,11 @@ var TwitterApi = function () {
 
     _createClass(TwitterApi, null, [{
         key: "getList",
-        value: function getList(startDate) {
-            return _axios2.default.get("http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name=appdirect");
+        value: function getList(params) {
+            var startDate = params.startDate,
+                tweetsAmount = params.tweetsAmount;
+
+            return _axios2.default.get("/tweets/appdirect?count=" + tweetsAmount);
         }
     }]);
 
@@ -310,13 +318,13 @@ var _TweetsFetcher = __webpack_require__(1226);
 
 var _TweetsFetcher2 = _interopRequireDefault(_TweetsFetcher);
 
-var _styles = __webpack_require__(476);
+var _styles = __webpack_require__(287);
 
-var _controls = __webpack_require__(1234);
+var _controls = __webpack_require__(1235);
 
 var _controls2 = _interopRequireDefault(_controls);
 
-var _reactRedux = __webpack_require__(105);
+var _reactRedux = __webpack_require__(106);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -365,12 +373,19 @@ var TweetsViewer = function (_React$Component) {
     }, {
         key: 'render',
         value: function render(props) {
+
+            var rootStyle = {
+                backgroundColor: this.getPrimaryColor(),
+                height: '100%',
+                position: 'absolute'
+            };
+
             return _react2.default.createElement(
                 _styles.MuiThemeProvider,
                 { theme: this.getActiveTheme() },
                 _react2.default.createElement(
                     'section',
-                    { style: { backgroundColor: this.getPrimaryColor() } },
+                    { style: rootStyle },
                     _react2.default.createElement(
                         'header',
                         null,
@@ -417,13 +432,13 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(105);
+var _reactRedux = __webpack_require__(106);
 
 var _TweetsColumns = __webpack_require__(1227);
 
 var _TweetsColumns2 = _interopRequireDefault(_TweetsColumns);
 
-var _divider = __webpack_require__(1233);
+var _divider = __webpack_require__(1234);
 
 var _divider2 = _interopRequireDefault(_divider);
 
@@ -445,7 +460,8 @@ var TweetsFetcher = function (_React$Component) {
 
         _this.props.dispatch({
             type: "FETCH_TWEETS",
-            startDate: _this.props.startDate
+            startDate: _this.props.startDate,
+            tweetsAmount: _this.props.tweetsAmount
         });
         return _this;
     }
@@ -467,7 +483,8 @@ function mapStateToProps(state) {
     return {
         tweets: state.viewer.tweets,
         cols: state.viewer.cols,
-        startDate: state.controls.startDate
+        startDate: state.controls.startDate,
+        tweetsAmount: state.controls.tweetsAmount
     };
 }
 
@@ -495,17 +512,17 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactSortableHoc = __webpack_require__(396);
+var _reactSortableHoc = __webpack_require__(397);
 
 var _TweetsColumn = __webpack_require__(1228);
 
 var _TweetsColumn2 = _interopRequireDefault(_TweetsColumn);
 
-var _handle = __webpack_require__(1232);
+var _handle = __webpack_require__(1233);
 
 var _handle2 = _interopRequireDefault(_handle);
 
-var _reactJss = __webpack_require__(104);
+var _reactJss = __webpack_require__(105);
 
 var _reactJss2 = _interopRequireDefault(_reactJss);
 
@@ -611,15 +628,15 @@ var _Tweet = __webpack_require__(1229);
 
 var _Tweet2 = _interopRequireDefault(_Tweet);
 
-var _reactJss = __webpack_require__(104);
+var _reactJss = __webpack_require__(105);
 
 var _reactJss2 = _interopRequireDefault(_reactJss);
 
-var _styles = __webpack_require__(1231);
+var _styles = __webpack_require__(1232);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _reactRedux = __webpack_require__(105);
+var _reactRedux = __webpack_require__(106);
 
 var _Grid = __webpack_require__(285);
 
@@ -629,7 +646,7 @@ var _Paper = __webpack_require__(136);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
-var _Divider = __webpack_require__(474);
+var _Divider = __webpack_require__(475);
 
 var _Divider2 = _interopRequireDefault(_Divider);
 
@@ -724,7 +741,7 @@ var _styles = __webpack_require__(1230);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _reactJss = __webpack_require__(104);
+var _reactJss = __webpack_require__(105);
 
 var _reactJss2 = _interopRequireDefault(_reactJss);
 
@@ -732,17 +749,17 @@ var _dateformat = __webpack_require__(479);
 
 var _dateformat2 = _interopRequireDefault(_dateformat);
 
-var _Card = __webpack_require__(470);
+var _Card = __webpack_require__(471);
 
-var _Typography = __webpack_require__(112);
+var _Typography = __webpack_require__(95);
 
 var _Typography2 = _interopRequireDefault(_Typography);
 
-var _toMentionLink = __webpack_require__(380);
+var _toMentionLink = __webpack_require__(381);
 
 var _toMentionLink2 = _interopRequireDefault(_toMentionLink);
 
-var _reactHtmlParser = __webpack_require__(382);
+var _reactHtmlParser = __webpack_require__(383);
 
 var _reactHtmlParser2 = _interopRequireDefault(_reactHtmlParser);
 
@@ -753,6 +770,12 @@ var _IconButton2 = _interopRequireDefault(_IconButton);
 var _KeyboardArrowRight = __webpack_require__(477);
 
 var _KeyboardArrowRight2 = _interopRequireDefault(_KeyboardArrowRight);
+
+var _styles3 = __webpack_require__(287);
+
+var _mention = __webpack_require__(1231);
+
+var _mention2 = _interopRequireDefault(_mention);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -772,16 +795,14 @@ var Tweet = function (_React$Component) {
     }
 
     _createClass(Tweet, [{
-        key: 'shouldComponentUpdate',
-        value: function shouldComponentUpdate() {
-            return false;
-        }
-    }, {
         key: 'render',
         value: function render() {
             var classes = this.props.classes;
             var created_at = (0, _dateformat2.default)(this.props.created, "h:MM TT - d mmm yyyy");
-            var formattedTweets = (0, _toMentionLink2.default)(this.props.content, { renderer: 'html' });
+            var formattedTweets = (0, _toMentionLink2.default)(this.props.content, {
+                renderer: (0, _mention2.default)(this.props.theme.palette.secondary["A100"]),
+                url: 'https://twitter.com'
+            });
             return _react2.default.createElement(
                 'div',
                 null,
@@ -820,7 +841,7 @@ var Tweet = function (_React$Component) {
     return Tweet;
 }(_react2.default.Component);
 
-exports.default = (0, _reactJss2.default)(_styles2.default)(Tweet);
+exports.default = (0, _styles3.withTheme)((0, _reactJss2.default)(_styles2.default)(Tweet));
 
  ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\Tweet\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\Tweet\\index.js"); } } })();
 
@@ -875,6 +896,26 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+exports.default = function (linkColor) {
+    return function (mention, url, title) {
+        return ["<a target='blank' style='color:", linkColor, "' href='", url, "'>", mention, "</a>"].join("");
+    };
+};
+
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\Tweet\\mention.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\Tweet\\mention.js"); } } })();
+
+/***/ }),
+
+/***/ 1232:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 var styles = {
     root: {
         flexGrow: 1,
@@ -889,7 +930,7 @@ exports.default = styles;
 
 /***/ }),
 
-/***/ 1232:
+/***/ 1233:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -911,7 +952,7 @@ var _styles = __webpack_require__(480);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _reactJss = __webpack_require__(104);
+var _reactJss = __webpack_require__(105);
 
 var _reactJss2 = _interopRequireDefault(_reactJss);
 
@@ -935,7 +976,7 @@ exports.default = (0, _reactJss2.default)(_styles2.default)(ColumnHandle);
 
 /***/ }),
 
-/***/ 1233:
+/***/ 1234:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -957,7 +998,7 @@ function divider(items, by) {
 
 /***/ }),
 
-/***/ 1234:
+/***/ 1235:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -973,35 +1014,31 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _AppBar = __webpack_require__(475);
+var _AppBar = __webpack_require__(476);
 
 var _AppBar2 = _interopRequireDefault(_AppBar);
 
-var _Toolbar = __webpack_require__(454);
+var _Toolbar = __webpack_require__(455);
 
 var _Toolbar2 = _interopRequireDefault(_Toolbar);
 
-var _Typography = __webpack_require__(112);
+var _Typography = __webpack_require__(95);
 
 var _Typography2 = _interopRequireDefault(_Typography);
 
-var _Switch = __webpack_require__(468);
+var _Switch = __webpack_require__(469);
 
 var _Switch2 = _interopRequireDefault(_Switch);
 
-var _styles = __webpack_require__(1235);
+var _styles = __webpack_require__(1236);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _reactRedux = __webpack_require__(105);
+var _reactRedux = __webpack_require__(106);
 
-var _reactJss = __webpack_require__(104);
+var _reactJss = __webpack_require__(105);
 
 var _reactJss2 = _interopRequireDefault(_reactJss);
-
-var _rcSlider = __webpack_require__(412);
-
-var _rcSlider2 = _interopRequireDefault(_rcSlider);
 
 var _IconButton = __webpack_require__(134);
 
@@ -1011,17 +1048,161 @@ var _MoreVert = __webpack_require__(478);
 
 var _MoreVert2 = _interopRequireDefault(_MoreVert);
 
-var _Dialog = __webpack_require__(455);
+var _modal = __webpack_require__(1237);
 
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _TextField = __webpack_require__(464);
-
-var _TextField2 = _interopRequireDefault(_TextField);
+var _modal2 = _interopRequireDefault(_modal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AppControls = function (_React$Component) {
+    _inherits(AppControls, _React$Component);
+
+    function AppControls(props) {
+        _classCallCheck(this, AppControls);
+
+        var _this = _possibleConstructorReturn(this, (AppControls.__proto__ || Object.getPrototypeOf(AppControls)).call(this, props));
+
+        _this.switchTheme = function (event, checked) {
+            _this.props.dispatch({
+                type: "SET_THEME",
+                theme: checked ? "dark" : "light"
+            });
+            _this.setState({ theme: checked });
+        };
+
+        _this.handleRequestClose = function (value) {
+            _this.setState({ open: false });
+        };
+
+        _this.switchTheme = _this.switchTheme.bind(_this);
+
+        _this.state = {
+            open: false,
+            theme: _this.props.controls.theme === "dark"
+        };
+        return _this;
+    }
+
+    _createClass(AppControls, [{
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var classes = this.props.classes;
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    _AppBar2.default,
+                    { position: 'static', color: 'default' },
+                    _react2.default.createElement(
+                        _Toolbar2.default,
+                        null,
+                        _react2.default.createElement(
+                            _Typography2.default,
+                            { type: 'title', color: 'inherit', className: classes.flex },
+                            'Twitter Viewer'
+                        ),
+                        _react2.default.createElement(_Switch2.default, {
+                            onChange: this.switchTheme,
+                            checked: this.state.theme
+                        }),
+                        _react2.default.createElement(
+                            _IconButton2.default,
+                            {
+                                'aria-label': 'More',
+                                'aria-haspopup': 'true',
+                                onClick: function onClick() {
+                                    return _this2.setState({ open: true });
+                                }
+                            },
+                            _react2.default.createElement(_MoreVert2.default, null)
+                        )
+                    )
+                ),
+                _react2.default.createElement(_modal2.default, { open: this.state.open,
+                    onChangeControls: this.props.dispatch,
+                    onRequestClose: this.handleRequestClose,
+                    controls: this.props.controls
+                })
+            );
+        }
+    }]);
+
+    return AppControls;
+}(_react2.default.Component);
+
+function mapEditStateToProps(state) {
+    return {
+        controls: state.controls
+    };
+}
+
+exports.default = (0, _reactRedux.connect)(mapEditStateToProps)((0, _reactJss2.default)(_styles2.default)(AppControls));
+
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\controls\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\controls\\index.js"); } } })();
+
+/***/ }),
+
+/***/ 1236:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var styles = {
+    flex: {
+        flex: 1
+    }
+};
+exports.default = styles;
+
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\controls\\styles.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\controls\\styles.js"); } } })();
+
+/***/ }),
+
+/***/ 1237:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _rcSlider = __webpack_require__(413);
+
+var _rcSlider2 = _interopRequireDefault(_rcSlider);
+
+var _Dialog = __webpack_require__(456);
+
+var _Dialog2 = _interopRequireDefault(_Dialog);
+
+var _TextField = __webpack_require__(465);
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _Typography = __webpack_require__(95);
+
+var _Typography2 = _interopRequireDefault(_Typography);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1085,10 +1266,7 @@ var MoreControlsDialog = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _props = this.props,
-                classes = _props.classes,
-                onRequestClose = _props.onRequestClose,
-                other = _objectWithoutProperties(_props, ['classes', 'onRequestClose']);
+            var onRequestClose = this.props.onRequestClose;
 
             var wrapperStyle = { width: 400, margin: 50 };
 
@@ -1139,113 +1317,9 @@ var MoreControlsDialog = function (_React$Component) {
     return MoreControlsDialog;
 }(_react2.default.Component);
 
-var AppControls = function (_React$Component2) {
-    _inherits(AppControls, _React$Component2);
+exports.default = MoreControlsDialog;
 
-    function AppControls(props) {
-        _classCallCheck(this, AppControls);
-
-        var _this2 = _possibleConstructorReturn(this, (AppControls.__proto__ || Object.getPrototypeOf(AppControls)).call(this, props));
-
-        _this2.switchTheme = function (event, checked) {
-            _this2.props.dispatch({
-                type: "SET_THEME",
-                theme: checked ? "dark" : "light"
-            });
-            _this2.setState({ theme: checked });
-        };
-
-        _this2.handleRequestClose = function (value) {
-            _this2.setState({ open: false });
-        };
-
-        _this2.switchTheme = _this2.switchTheme.bind(_this2);
-
-        _this2.state = {
-            open: false,
-            theme: _this2.props.controls.theme === "dark"
-        };
-        return _this2;
-    }
-
-    _createClass(AppControls, [{
-        key: 'render',
-        value: function render() {
-            var _this3 = this;
-
-            var classes = this.props.classes;
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    _AppBar2.default,
-                    { position: 'static', color: 'default' },
-                    _react2.default.createElement(
-                        _Toolbar2.default,
-                        null,
-                        _react2.default.createElement(
-                            _Typography2.default,
-                            { type: 'title', color: 'inherit', className: classes.flex },
-                            'Twitter Viewer'
-                        ),
-                        _react2.default.createElement(_Switch2.default, {
-                            onChange: this.switchTheme,
-                            checked: this.state.theme
-                        }),
-                        _react2.default.createElement(
-                            _IconButton2.default,
-                            {
-                                'aria-label': 'More',
-                                'aria-haspopup': 'true',
-                                onClick: function onClick() {
-                                    return _this3.setState({ open: true });
-                                }
-                            },
-                            _react2.default.createElement(_MoreVert2.default, null)
-                        )
-                    )
-                ),
-                _react2.default.createElement(MoreControlsDialog, { open: this.state.open,
-                    onChangeControls: this.props.dispatch,
-                    onRequestClose: this.handleRequestClose,
-                    controls: this.props.controls
-                })
-            );
-        }
-    }]);
-
-    return AppControls;
-}(_react2.default.Component);
-
-function mapEditStateToProps(state) {
-    return {
-        controls: state.controls
-    };
-}
-
-exports.default = (0, _reactRedux.connect)(mapEditStateToProps)((0, _reactJss2.default)(_styles2.default)(AppControls));
-
- ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\controls.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\controls.js"); } } })();
-
-/***/ }),
-
-/***/ 1235:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var styles = {
-    flex: {
-        flex: 1
-    }
-};
-exports.default = styles;
-
- ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\styles.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsViewer\\styles.js"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\controls\\modal.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\controls\\modal.js"); } } })();
 
 /***/ }),
 

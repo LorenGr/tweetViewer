@@ -1,36 +1,32 @@
 'use strict';
 
-//Middleware: Allows cross-domain requests (CORS)
-var allowCrossDomain = function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-
-    next();
-}
-var methodOverride = require('method-override');
-var twitterProxyServer = require('twitter-proxy');
-var twitterAPIKeys = require('./config.json');
-twitterProxyServer(twitterAPIKeys);
+//Twitter package
+var Twit = require('twit');
+var config = require('./config');
+var T = new Twit(config);
 
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3001;
-app.use(methodOverride());
-app.use(allowCrossDomain);
+
 app.use(express.static(__dirname + '/public'));
 app.get('/', (request, response) => {
     response.render('public/index');
 });
-app.all('/', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next();
+
+app.get('/tweets/:screen', (request, response) => {
+    T.get('statuses/user_timeline', {
+        count: request.query.count,
+        'screen_name': request.params.screen
+    }, (err, data, res) => {
+        response.send(data);
+    });
 });
+
+
 app.listen(port, (err) => {
     if (err) {
         return console.log('something bad happened', err)
     }
-
     console.log(`server is listening on ${port}`)
 });

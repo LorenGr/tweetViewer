@@ -1,5 +1,7 @@
 export default function controls(state = {
-    theme: 'light'
+    theme: 'light',
+    tweetsAmount: 30,
+    columnAmount: 10
 }, action) {
     let new_state = JSON.parse(JSON.stringify(state));
 

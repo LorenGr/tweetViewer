@@ -18,6 +18,7 @@
     "react-sortable-hoc": "^0.6.7",
     "redux-localstorage": "^0.4.1",
     "to-mention-link": "^0.1.0",
+    "twit": "^2.2.9",
     "twitter-proxy": "^2.0.0",
     "webpack": "^3.5.5"
   },
@@ -49,9 +50,8 @@
     "webpack-dev-server": "^2.4.1"
   },
   "scripts": {
-    "twitter": "node twitterAPI.js",
     "start": "node index.js",
-    "start-dev": "webpack-dev-server --inline --hot --host localhost --port 3000",
+    "start-dev": "webpack-dev-server --inline --hot --host localhost --port 4000",
     "build": "webpack --colors --progress --config webpack.config.js"
   }
 }

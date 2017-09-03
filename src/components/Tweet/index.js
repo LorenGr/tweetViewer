@@ -8,17 +8,20 @@ import toMention from 'to-mention-link';
 import ReactHtmlParser from 'react-html-parser';
 import IconButton from 'material-ui/IconButton';
 import KeyboardArrowRight from 'material-ui-icons/KeyboardArrowRight';
+import {withTheme} from 'material-ui/styles';
+import mentionRenderer from './mention';
 
 class Tweet extends React.Component {
-
-    shouldComponentUpdate() {
-        return false;
-    }
 
     render() {
         const classes = this.props.classes;
         const created_at = dateFormat(this.props.created, "h:MM TT - d mmm yyyy");
-        const formattedTweets = toMention(this.props.content, {renderer: 'html'});
+        const formattedTweets = toMention(this.props.content,
+            {
+                renderer: mentionRenderer(this.props.theme.palette.secondary["A100"]),
+                url: 'https://twitter.com'
+            }
+        );
         return (
             <div>
                 <CardContent className={classes.contentRoot}>
@@ -42,4 +45,4 @@ class Tweet extends React.Component {
     }
 }
 
-export default injectSheet(styles)(Tweet);
+export default withTheme(injectSheet(styles)(Tweet));

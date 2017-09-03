@@ -1,7 +1,7 @@
 import React from 'react';
 import TweetsFetcher from '../TweetsFetcher';
 import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
-import AppControls from './controls';
+import AppControls from '../controls';
 import {connect} from 'react-redux';
 
 const themes = {
@@ -34,9 +34,16 @@ class TweetsViewer extends React.Component {
     }
 
     render(props) {
+
+        const rootStyle = {
+            backgroundColor: this.getPrimaryColor(),
+            height: '100%',
+            position: 'absolute'
+        };
+
         return (
             <MuiThemeProvider theme={this.getActiveTheme()}>
-                <section style={{backgroundColor: this.getPrimaryColor()}}>
+                <section style={rootStyle}>
                     <header>
                         <AppControls/>
                     </header>
