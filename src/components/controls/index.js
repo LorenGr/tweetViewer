@@ -45,7 +45,7 @@ class AppControls extends React.Component {
                 <AppBar position="static" color="default">
                     <Toolbar>
                         <Typography type="title" color="inherit" className={classes.flex}>
-                            Twitter Viewer
+                            {this.props.controls.screenName} Twitter timeline
                         </Typography>
 
                         <Switch

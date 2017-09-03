@@ -1,7 +1,8 @@
 export default function controls(state = {
     theme: 'light',
     tweetsAmount: 30,
-    columnAmount: 10
+    columnAmount: 10,
+    screenName: "appdirect"
 }, action) {
     let new_state = JSON.parse(JSON.stringify(state));
 

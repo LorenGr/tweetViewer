@@ -135,7 +135,8 @@ function controls() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
         theme: 'light',
         tweetsAmount: 30,
-        columnAmount: 10
+        columnAmount: 10,
+        screenName: "appdirect"
     };
     var action = arguments[1];
 
@@ -226,23 +227,22 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _marked = /*#__PURE__*/regeneratorRuntime.mark(fetchTweets);
 
 function fetchTweets(action) {
-    var tweets;
+    var _action$controls, screenName, startDate, tweetsAmount, tweets;
+
     return regeneratorRuntime.wrap(function fetchTweets$(_context) {
         while (1) {
             switch (_context.prev = _context.next) {
                 case 0:
-                    _context.next = 2;
-                    return (0, _effects.call)(_api2.default.getList, {
-                        startDate: action.startDate,
-                        tweetsAmount: action.tweetsAmount
-                    });
+                    _action$controls = action.controls, screenName = _action$controls.screenName, startDate = _action$controls.startDate, tweetsAmount = _action$controls.tweetsAmount;
+                    _context.next = 3;
+                    return (0, _effects.call)(_api2.default.getList, { screenName: screenName, startDate: startDate, tweetsAmount: tweetsAmount });
 
-                case 2:
+                case 3:
                     tweets = _context.sent;
-                    _context.next = 5;
+                    _context.next = 6;
                     return (0, _effects.put)({ type: 'FETCH_TWEETS_SUCCESS', tweets: tweets.data });
 
-                case 5:
+                case 6:
                 case 'end':
                     return _context.stop();
             }
@@ -282,10 +282,11 @@ var TwitterApi = function () {
     _createClass(TwitterApi, null, [{
         key: "getList",
         value: function getList(params) {
-            var startDate = params.startDate,
+            var screenName = params.screenName,
+                startDate = params.startDate,
                 tweetsAmount = params.tweetsAmount;
 
-            return _axios2.default.get("/tweets/appdirect?count=" + tweetsAmount);
+            return _axios2.default.get("/tweets/" + screenName + "?count=" + tweetsAmount);
         }
     }]);
 
@@ -459,9 +460,7 @@ var TweetsFetcher = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (TweetsFetcher.__proto__ || Object.getPrototypeOf(TweetsFetcher)).call(this, props));
 
         _this.props.dispatch({
-            type: "FETCH_TWEETS",
-            startDate: _this.props.startDate,
-            tweetsAmount: _this.props.tweetsAmount
+            type: "FETCH_TWEETS", controls: _this.props.controls
         });
         return _this;
     }
@@ -483,8 +482,7 @@ function mapStateToProps(state) {
     return {
         tweets: state.viewer.tweets,
         cols: state.viewer.cols,
-        startDate: state.controls.startDate,
-        tweetsAmount: state.controls.tweetsAmount
+        controls: state.controls
     };
 }
 
@@ -1107,7 +1105,8 @@ var AppControls = function (_React$Component) {
                         _react2.default.createElement(
                             _Typography2.default,
                             { type: 'title', color: 'inherit', className: classes.flex },
-                            'Twitter Viewer'
+                            this.props.controls.screenName,
+                            ' Twitter timeline'
                         ),
                         _react2.default.createElement(_Switch2.default, {
                             onChange: this.switchTheme,
