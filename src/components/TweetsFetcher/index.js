@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import TweetsColumns from '../TweetsColumns';
-import divider from '../TweetsFetcher/divider';
 
 class TweetsFetcher extends React.Component {
 
@@ -13,17 +12,16 @@ class TweetsFetcher extends React.Component {
     }
 
     render() {
-        const tweets = this.props.tweets;
-        let tweetGroups = [];
-        if (tweets && tweets.length) tweetGroups = divider(tweets, tweets.length / this.props.cols);
-        return (<TweetsColumns tweets={tweetGroups} columnCount={this.props.cols}/>);
+        return this.props.tweets ?
+            (<TweetsColumns tweets={this.props.tweets}
+                            columnCount={this.props.controls.amountOfColumns}/>)
+            : (<div></div>);
     }
 }
 
 function mapStateToProps(state) {
     return {
-        tweets: state.viewer.tweets,
-        cols: state.viewer.cols,
+        tweets: state.sortedTweets,
         controls: state.controls
     }
 }

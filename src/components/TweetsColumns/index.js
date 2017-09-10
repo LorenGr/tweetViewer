@@ -10,7 +10,8 @@ import Grid from 'material-ui/Grid';
 const DragHandle = SortableHandle(ColumnHandle);
 const SortableItem = SortableElement((props) =>
     <div className={props.className}>
-        <TweetsColumn handle={DragHandle} value={props.value} tweets={props.tweets}/>
+        <TweetsColumn handle={DragHandle} value={props.value}
+                      tweets={props.tweets}/>
     </div>
 );
 
@@ -42,7 +43,10 @@ class TweetsColumns extends React.Component {
     }
 
     render() {
-        return <SortableList items={this.state.items} onSortEnd={this.onSortEnd} useDragHandle={true}
+        return <SortableList items={this.state.items}
+                             onSortEnd={this.onSortEnd}
+                             tweets={this.props.tweets}
+                             useDragHandle={true}
                              axis='x' {...this.props} />;
     }
 }

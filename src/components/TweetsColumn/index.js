@@ -2,7 +2,6 @@ import React from 'react';
 import Tweet from '../Tweet';
 import injectSheet from 'react-jss';
 import styles from './styles';
-import {connect} from 'react-redux';
 
 //Material
 import Grid from 'material-ui/Grid';
@@ -11,17 +10,12 @@ import Divider from 'material-ui/Divider';
 
 class TweetsColumn extends React.Component {
 
-    getColumnLimit(amount) {
-        return this.props.columnAmount <= amount ? this.props.columnAmount : amount;
-    }
-
     render() {
         const tweets = this.props.tweets || [];
         const DragHandle = this.props.handle;
         const classes = this.props.classes;
         const tweetsEls = [];
-        const columnLimit = this.getColumnLimit(tweets.length);
-        for (let i = 0; i < columnLimit; i++) {
+        for (let i = 0; i < tweets.length; i++) {
             tweetsEls.push(
                 <div key={i}>
                     <Tweet id={tweets[i]['id_str']}
@@ -41,12 +35,4 @@ class TweetsColumn extends React.Component {
     }
 }
 
-function mapEditStateToProps(state) {
-    return {
-        columnAmount: state.controls.columnAmount
-    }
-}
-
-export default connect(mapEditStateToProps)(
-    injectSheet(styles)(TweetsColumn)
-);
+export default injectSheet(styles)(TweetsColumn);

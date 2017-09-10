@@ -14,23 +14,25 @@ var _reactDom = __webpack_require__(26);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _redux = __webpack_require__(163);
+var _redux = __webpack_require__(234);
 
-var _reactRedux = __webpack_require__(106);
+var _reactRedux = __webpack_require__(122);
 
 var _index = __webpack_require__(1219);
+
+var _index2 = _interopRequireDefault(_index);
 
 var _reduxSaga = __webpack_require__(236);
 
 var _reduxSaga2 = _interopRequireDefault(_reduxSaga);
 
-var _index2 = __webpack_require__(1222);
+var _index3 = __webpack_require__(1221);
 
 var _reduxLocalstorage = __webpack_require__(380);
 
 var _reduxLocalstorage2 = _interopRequireDefault(_reduxLocalstorage);
 
-var _TweetsViewer = __webpack_require__(1225);
+var _TweetsViewer = __webpack_require__(1224);
 
 var _TweetsViewer2 = _interopRequireDefault(_TweetsViewer);
 
@@ -45,8 +47,8 @@ var sagaMiddleware = (0, _reduxSaga2.default)();
 
 var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || _redux.compose;
 var persistStateMiddleware = (0, _reduxLocalstorage2.default)("controls");
-var store = (0, _redux.createStore)(_index.reducers, composeEnhancers((0, _redux.applyMiddleware)(sagaMiddleware), persistStateMiddleware));
-sagaMiddleware.run(_index2.sagas);
+var store = (0, _redux.createStore)(_index2.default, composeEnhancers((0, _redux.applyMiddleware)(sagaMiddleware), persistStateMiddleware));
+sagaMiddleware.run(_index3.sagas);
 
 _reactDom2.default.render(_react2.default.createElement(
     _reactRedux.Provider,
@@ -65,23 +67,64 @@ _reactDom2.default.render(_react2.default.createElement(
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
-exports.reducers = undefined;
+exports.default = reducers;
 
-var _redux = __webpack_require__(163);
+var _tweetGrouper = __webpack_require__(1220);
 
-var _viewer = __webpack_require__(1220);
-
-var _viewer2 = _interopRequireDefault(_viewer);
-
-var _controls = __webpack_require__(1221);
-
-var _controls2 = _interopRequireDefault(_controls);
+var _tweetGrouper2 = _interopRequireDefault(_tweetGrouper);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var reducers = exports.reducers = (0, _redux.combineReducers)({ viewer: _viewer2.default, controls: _controls2.default });
+function getTweetsStartDate() {
+    var today = new Date();
+    today.setMonth(today.getMonth() - 3);
+    return today.toISOString().substr(0, 10);
+}
+
+function reducers() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+        controls: {
+            theme: 'light',
+            tweetsAmount: 30,
+            amountTweetsPerColumn: 10,
+            screenName: "appdirect",
+            amountOfColumns: 3,
+            startDate: getTweetsStartDate()
+        }
+    };
+    var action = arguments[1];
+
+    var new_state = JSON.parse(JSON.stringify(state));
+
+    switch (action.type) {
+
+        case "FETCH_TWEETS_SUCCESS":
+            new_state.tweets = action.tweets;
+            return new_state;
+
+        case "REDRAW_TWEETS":
+            new_state.sortedTweets = (0, _tweetGrouper2.default)(new_state.tweets, new Date(new_state.controls.startDate), new_state.controls.amountTweetsPerColumn, new_state.controls.amountOfColumns);
+            return new_state;
+
+        case "SET_THEME":
+            new_state.controls.theme = action.theme;
+            return new_state;
+
+        case "SET_COLUMN_AMOUNT":
+            new_state.controls.amountTweetsPerColumn = action.amount;
+            return new_state;
+
+        case "SET_TWEETS_START_DATE":
+            new_state.controls.startDate = action.date;
+            return new_state;
+
+        default:
+            return state;
+
+    }
+}
 
  ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\reducers\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\reducers\\index.js"); } } })();
 
@@ -96,77 +139,30 @@ var reducers = exports.reducers = (0, _redux.combineReducers)({ viewer: _viewer2
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = viewer;
-function viewer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-        cols: 3
-    };
-    var action = arguments[1];
+exports.default = groupTweets;
+function groupTweets(tweets, startDate, chunkSize, cols) {
+    var sortedTweets = tweets.sort(function (a, b) {
+        return new Date(b["created_at"]) - new Date(a["created_at"]);
+    }).filter(function (tweet) {
+        return new Date(tweet["created_at"]) > startDate;
+    });
 
-    var new_state = JSON.parse(JSON.stringify(state));
+    var colCount = 0;
+    return [].concat.apply([], sortedTweets.map(function (elem, i) {
+        function divide() {
+            colCount++;
+            return [sortedTweets.slice(i, i + chunkSize)];
+        }
 
-    switch (action.type) {
-
-        case "FETCH_TWEETS_SUCCESS":
-            new_state.tweets = action.tweets;
-            return new_state;
-
-        default:
-            return state;
-
-    }
+        return i % chunkSize || colCount > cols ? [] : divide();
+    }));
 }
 
- ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\reducers\\viewer.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\reducers\\viewer.js"); } } })();
+ ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\reducers\\tweetGrouper.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\reducers\\tweetGrouper.js"); } } })();
 
 /***/ }),
 
 /***/ 1221:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = controls;
-function controls() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-        theme: 'light',
-        tweetsAmount: 30,
-        columnAmount: 10,
-        screenName: "appdirect"
-    };
-    var action = arguments[1];
-
-    var new_state = JSON.parse(JSON.stringify(state));
-
-    switch (action.type) {
-
-        case "SET_THEME":
-            new_state.theme = action.theme;
-            return new_state;
-
-        case "SET_COLUMN_AMOUNT":
-            new_state.columnAmount = action.amount;
-            return new_state;
-
-        case "SET_TWEETS_START_DATE":
-            new_state.startDate = action.date;
-            return new_state;
-
-        default:
-            return state;
-
-    }
-}
-
- ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\reducers\\controls.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\reducers\\controls.js"); } } })();
-
-/***/ }),
-
-/***/ 1222:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -181,7 +177,7 @@ var _reduxSaga = __webpack_require__(236);
 
 var _effects = __webpack_require__(238);
 
-var _tweets = __webpack_require__(1223);
+var _tweets = __webpack_require__(1222);
 
 var _marked = /*#__PURE__*/regeneratorRuntime.mark(sagas);
 
@@ -205,7 +201,7 @@ function sagas() {
 
 /***/ }),
 
-/***/ 1223:
+/***/ 1222:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -218,7 +214,7 @@ exports.fetchTweets = fetchTweets;
 
 var _effects = __webpack_require__(238);
 
-var _api = __webpack_require__(1224);
+var _api = __webpack_require__(1223);
 
 var _api2 = _interopRequireDefault(_api);
 
@@ -227,15 +223,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _marked = /*#__PURE__*/regeneratorRuntime.mark(fetchTweets);
 
 function fetchTweets(action) {
-    var _action$controls, screenName, startDate, tweetsAmount, tweets;
+    var _action$controls, screenName, tweetsAmount, tweets;
 
     return regeneratorRuntime.wrap(function fetchTweets$(_context) {
         while (1) {
             switch (_context.prev = _context.next) {
                 case 0:
-                    _action$controls = action.controls, screenName = _action$controls.screenName, startDate = _action$controls.startDate, tweetsAmount = _action$controls.tweetsAmount;
+                    _action$controls = action.controls, screenName = _action$controls.screenName, tweetsAmount = _action$controls.tweetsAmount;
                     _context.next = 3;
-                    return (0, _effects.call)(_api2.default.getList, { screenName: screenName, startDate: startDate, tweetsAmount: tweetsAmount });
+                    return (0, _effects.call)(_api2.default.getList, { screenName: screenName, tweetsAmount: tweetsAmount });
 
                 case 3:
                     tweets = _context.sent;
@@ -243,6 +239,10 @@ function fetchTweets(action) {
                     return (0, _effects.put)({ type: 'FETCH_TWEETS_SUCCESS', tweets: tweets.data });
 
                 case 6:
+                    _context.next = 8;
+                    return (0, _effects.put)({ type: 'REDRAW_TWEETS' });
+
+                case 8:
                 case 'end':
                     return _context.stop();
             }
@@ -254,7 +254,7 @@ function fetchTweets(action) {
 
 /***/ }),
 
-/***/ 1224:
+/***/ 1223:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -299,7 +299,7 @@ exports.default = TwitterApi;
 
 /***/ }),
 
-/***/ 1225:
+/***/ 1224:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -315,17 +315,17 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _TweetsFetcher = __webpack_require__(1226);
+var _TweetsFetcher = __webpack_require__(1225);
 
 var _TweetsFetcher2 = _interopRequireDefault(_TweetsFetcher);
 
 var _styles = __webpack_require__(287);
 
-var _controls = __webpack_require__(1235);
+var _controls = __webpack_require__(1233);
 
 var _controls2 = _interopRequireDefault(_controls);
 
-var _reactRedux = __webpack_require__(106);
+var _reactRedux = __webpack_require__(122);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -378,6 +378,7 @@ var TweetsViewer = function (_React$Component) {
             var rootStyle = {
                 backgroundColor: this.getPrimaryColor(),
                 height: '100%',
+                width: '100%',
                 position: 'absolute'
             };
 
@@ -417,7 +418,7 @@ exports.default = (0, _reactRedux.connect)(mapEditStateToProps)(TweetsViewer);
 
 /***/ }),
 
-/***/ 1226:
+/***/ 1225:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -433,15 +434,11 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(106);
+var _reactRedux = __webpack_require__(122);
 
-var _TweetsColumns = __webpack_require__(1227);
+var _TweetsColumns = __webpack_require__(1226);
 
 var _TweetsColumns2 = _interopRequireDefault(_TweetsColumns);
-
-var _divider = __webpack_require__(1234);
-
-var _divider2 = _interopRequireDefault(_divider);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -468,10 +465,8 @@ var TweetsFetcher = function (_React$Component) {
     _createClass(TweetsFetcher, [{
         key: 'render',
         value: function render() {
-            var tweets = this.props.tweets;
-            var tweetGroups = [];
-            if (tweets && tweets.length) tweetGroups = (0, _divider2.default)(tweets, tweets.length / this.props.cols);
-            return _react2.default.createElement(_TweetsColumns2.default, { tweets: tweetGroups, columnCount: this.props.cols });
+            return this.props.tweets ? _react2.default.createElement(_TweetsColumns2.default, { tweets: this.props.tweets,
+                columnCount: this.props.controls.amountOfColumns }) : _react2.default.createElement('div', null);
         }
     }]);
 
@@ -480,8 +475,7 @@ var TweetsFetcher = function (_React$Component) {
 
 function mapStateToProps(state) {
     return {
-        tweets: state.viewer.tweets,
-        cols: state.viewer.cols,
+        tweets: state.sortedTweets,
         controls: state.controls
     };
 }
@@ -492,7 +486,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(TweetsFetcher);
 
 /***/ }),
 
-/***/ 1227:
+/***/ 1226:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -512,11 +506,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactSortableHoc = __webpack_require__(397);
 
-var _TweetsColumn = __webpack_require__(1228);
+var _TweetsColumn = __webpack_require__(1227);
 
 var _TweetsColumn2 = _interopRequireDefault(_TweetsColumn);
 
-var _handle = __webpack_require__(1233);
+var _handle = __webpack_require__(1232);
 
 var _handle2 = _interopRequireDefault(_handle);
 
@@ -545,7 +539,8 @@ var SortableItem = (0, _reactSortableHoc.SortableElement)(function (props) {
     return _react2.default.createElement(
         'div',
         { className: props.className },
-        _react2.default.createElement(_TweetsColumn2.default, { handle: DragHandle, value: props.value, tweets: props.tweets })
+        _react2.default.createElement(_TweetsColumn2.default, { handle: DragHandle, value: props.value,
+            tweets: props.tweets })
     );
 });
 
@@ -592,7 +587,10 @@ var TweetsColumns = function (_React$Component) {
     _createClass(TweetsColumns, [{
         key: 'render',
         value: function render() {
-            return _react2.default.createElement(SortableList, _extends({ items: this.state.items, onSortEnd: this.onSortEnd, useDragHandle: true,
+            return _react2.default.createElement(SortableList, _extends({ items: this.state.items,
+                onSortEnd: this.onSortEnd,
+                tweets: this.props.tweets,
+                useDragHandle: true,
                 axis: 'x' }, this.props));
         }
     }]);
@@ -606,7 +604,7 @@ exports.default = (0, _reactJss2.default)(_styles2.default)(TweetsColumns);
 
 /***/ }),
 
-/***/ 1228:
+/***/ 1227:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -622,7 +620,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Tweet = __webpack_require__(1229);
+var _Tweet = __webpack_require__(1228);
 
 var _Tweet2 = _interopRequireDefault(_Tweet);
 
@@ -630,11 +628,9 @@ var _reactJss = __webpack_require__(105);
 
 var _reactJss2 = _interopRequireDefault(_reactJss);
 
-var _styles = __webpack_require__(1232);
+var _styles = __webpack_require__(1231);
 
 var _styles2 = _interopRequireDefault(_styles);
-
-var _reactRedux = __webpack_require__(106);
 
 var _Grid = __webpack_require__(285);
 
@@ -669,19 +665,13 @@ var TweetsColumn = function (_React$Component) {
     }
 
     _createClass(TweetsColumn, [{
-        key: 'getColumnLimit',
-        value: function getColumnLimit(amount) {
-            return this.props.columnAmount <= amount ? this.props.columnAmount : amount;
-        }
-    }, {
         key: 'render',
         value: function render() {
             var tweets = this.props.tweets || [];
             var DragHandle = this.props.handle;
             var classes = this.props.classes;
             var tweetsEls = [];
-            var columnLimit = this.getColumnLimit(tweets.length);
-            for (var i = 0; i < columnLimit; i++) {
+            for (var i = 0; i < tweets.length; i++) {
                 tweetsEls.push(_react2.default.createElement(
                     'div',
                     { key: i },
@@ -707,19 +697,13 @@ var TweetsColumn = function (_React$Component) {
     return TweetsColumn;
 }(_react2.default.Component);
 
-function mapEditStateToProps(state) {
-    return {
-        columnAmount: state.controls.columnAmount
-    };
-}
-
-exports.default = (0, _reactRedux.connect)(mapEditStateToProps)((0, _reactJss2.default)(_styles2.default)(TweetsColumn));
+exports.default = (0, _reactJss2.default)(_styles2.default)(TweetsColumn);
 
  ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsColumn\\index.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsColumn\\index.js"); } } })();
 
 /***/ }),
 
-/***/ 1229:
+/***/ 1228:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -735,7 +719,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styles = __webpack_require__(1230);
+var _styles = __webpack_require__(1229);
 
 var _styles2 = _interopRequireDefault(_styles);
 
@@ -771,7 +755,7 @@ var _KeyboardArrowRight2 = _interopRequireDefault(_KeyboardArrowRight);
 
 var _styles3 = __webpack_require__(287);
 
-var _mention = __webpack_require__(1231);
+var _mention = __webpack_require__(1230);
 
 var _mention2 = _interopRequireDefault(_mention);
 
@@ -845,7 +829,7 @@ exports.default = (0, _styles3.withTheme)((0, _reactJss2.default)(_styles2.defau
 
 /***/ }),
 
-/***/ 1230:
+/***/ 1229:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -885,7 +869,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 1231:
+/***/ 1230:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -905,7 +889,7 @@ exports.default = function (linkColor) {
 
 /***/ }),
 
-/***/ 1232:
+/***/ 1231:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -928,7 +912,7 @@ exports.default = styles;
 
 /***/ }),
 
-/***/ 1233:
+/***/ 1232:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -974,29 +958,7 @@ exports.default = (0, _reactJss2.default)(_styles2.default)(ColumnHandle);
 
 /***/ }),
 
-/***/ 1234:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = divider;
-function divider(items, by) {
-    return items.map(function (item, index) {
-        return index % by === 0 ? items.slice(index, index + by) : null;
-    }).filter(function (item) {
-        return item;
-    });
-}
-
- ;(function register() { /* react-hot-loader/webpack */ if (false) { if (typeof __REACT_HOT_LOADER__ === 'undefined') { return; } if (typeof module.exports === 'function') { __REACT_HOT_LOADER__.register(module.exports, 'module.exports', "C:\\projects\\tweetViewer\\src\\components\\TweetsFetcher\\divider.js"); return; } for (var key in module.exports) { if (!Object.prototype.hasOwnProperty.call(module.exports, key)) { continue; } var namedExport = void 0; try { namedExport = module.exports[key]; } catch (err) { continue; } __REACT_HOT_LOADER__.register(namedExport, key, "C:\\projects\\tweetViewer\\src\\components\\TweetsFetcher\\divider.js"); } } })();
-
-/***/ }),
-
-/***/ 1235:
+/***/ 1233:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1028,11 +990,11 @@ var _Switch = __webpack_require__(469);
 
 var _Switch2 = _interopRequireDefault(_Switch);
 
-var _styles = __webpack_require__(1236);
+var _styles = __webpack_require__(1234);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _reactRedux = __webpack_require__(106);
+var _reactRedux = __webpack_require__(122);
 
 var _reactJss = __webpack_require__(105);
 
@@ -1046,7 +1008,7 @@ var _MoreVert = __webpack_require__(478);
 
 var _MoreVert2 = _interopRequireDefault(_MoreVert);
 
-var _modal = __webpack_require__(1237);
+var _modal = __webpack_require__(1235);
 
 var _modal2 = _interopRequireDefault(_modal);
 
@@ -1149,7 +1111,7 @@ exports.default = (0, _reactRedux.connect)(mapEditStateToProps)((0, _reactJss2.d
 
 /***/ }),
 
-/***/ 1236:
+/***/ 1234:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1169,7 +1131,7 @@ exports.default = styles;
 
 /***/ }),
 
-/***/ 1237:
+/***/ 1235:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1231,10 +1193,13 @@ var MoreControlsDialog = function (_React$Component) {
                 type: "SET_COLUMN_AMOUNT",
                 amount: value
             });
+            _this.props.onChangeControls({
+                type: "REDRAW_TWEETS"
+            });
         };
 
         _this.state = {
-            columnAmount: _this.props.controls.columnAmount
+            columnAmount: _this.props.controls.amountTweetsPerColumn
         };
 
         _this.setColumnDisplay = _this.setColumnDisplay.bind(_this);
@@ -1256,18 +1221,16 @@ var MoreControlsDialog = function (_React$Component) {
                 type: "SET_TWEETS_START_DATE",
                 date: field.target.value
             });
-        }
-    }, {
-        key: 'getTweetsStartDate',
-        value: function getTweetsStartDate() {
-            return this.props.controls.startDate || today;
+            this.props.onChangeControls({
+                type: "REDRAW_TWEETS"
+            });
         }
     }, {
         key: 'render',
         value: function render() {
             var onRequestClose = this.props.onRequestClose;
 
-            var wrapperStyle = { width: 400, margin: 50 };
+            var wrapperStyle = { width: 300, margin: 50 };
 
             return _react2.default.createElement(
                 _Dialog2.default,
@@ -1290,13 +1253,13 @@ var MoreControlsDialog = function (_React$Component) {
                         min: 2,
                         max: 10,
                         step: 2,
-                        defaultValue: this.props.controls.columnAmount
+                        defaultValue: this.props.controls.amountTweetsPerColumn
                     }),
                     _react2.default.createElement(_TextField2.default, {
                         id: 'date',
                         label: 'Tweets starting from date',
                         type: 'date',
-                        defaultValue: this.getTweetsStartDate(),
+                        defaultValue: this.props.controls.startDate,
                         max: today,
                         margin: 'normal',
                         fullWidth: true,

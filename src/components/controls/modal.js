@@ -25,6 +25,9 @@ export default class MoreControlsDialog extends React.Component {
             type: "SET_COLUMN_AMOUNT",
             amount: value
         });
+        this.props.onChangeControls({
+            type: "REDRAW_TWEETS"
+        });
     };
 
     setColumnDisplay(value) {
@@ -36,21 +39,20 @@ export default class MoreControlsDialog extends React.Component {
     setTweetsStartDate(field) {
         this.props.onChangeControls({
             type: "SET_TWEETS_START_DATE",
-            date : field.target.value
+            date: field.target.value
+        });
+        this.props.onChangeControls({
+            type: "REDRAW_TWEETS"
         });
     }
 
-    getTweetsStartDate() {
-        return this.props.controls.startDate || today;
-    }
-
     state = {
-        columnAmount: this.props.controls.columnAmount
+        columnAmount: this.props.controls.amountTweetsPerColumn
     };
 
     render() {
         const {onRequestClose} = this.props;
-        const wrapperStyle = {width: 400, margin: 50};
+        const wrapperStyle = {width: 300, margin: 50};
 
         return (
             <Dialog onRequestClose={this.handleRequestClose} open={this.props.open}>
@@ -62,13 +64,13 @@ export default class MoreControlsDialog extends React.Component {
                             min={2}
                             max={10}
                             step={2}
-                            defaultValue={this.props.controls.columnAmount}
+                            defaultValue={this.props.controls.amountTweetsPerColumn}
                     />
                     <TextField
                         id="date"
                         label="Tweets starting from date"
                         type="date"
-                        defaultValue={this.getTweetsStartDate()}
+                        defaultValue={this.props.controls.startDate}
                         max={today}
                         margin="normal"
                         fullWidth
@@ -76,7 +78,7 @@ export default class MoreControlsDialog extends React.Component {
                             shrink: true
                         }}
                         inputProps={{
-                            max : today
+                            max: today
                         }}
                         onChange={this.setTweetsStartDate}
                     />

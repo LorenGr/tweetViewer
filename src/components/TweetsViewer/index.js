@@ -38,6 +38,7 @@ class TweetsViewer extends React.Component {
         const rootStyle = {
             backgroundColor: this.getPrimaryColor(),
             height: '100%',
+            width: '100%',
             position: 'absolute'
         };
 

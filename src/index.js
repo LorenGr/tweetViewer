@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 //Redux
 import {createStore, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
-import {reducers} from './reducers/index';
+import reducers from './reducers/index';
 import createSagaMiddleware from 'redux-saga';
 import {sagas} from './sagas/index';
 import persistState from 'redux-localstorage';

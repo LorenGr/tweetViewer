@@ -51,7 +51,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "start-dev": "webpack-dev-server --inline --hot --host localhost --port 4000",
+    "start-dev": "webpack-dev-server --inline --hot --host localhost",
     "build": "webpack --colors --progress --config webpack.config.js"
   }
 }
